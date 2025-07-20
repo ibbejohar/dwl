@@ -23,7 +23,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "/path/to/your/image", NULL,
+        "swaybg", "-i", "~/Pictures/wallpaper/daniel-leone.jpg", NULL,
         NULL /* terminate */
 };
 

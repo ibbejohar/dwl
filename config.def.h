@@ -23,7 +23,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "/usr/bin/env","bash", "-c", "swaybg", "-i", "/home/fool/Pictures/wallpaper/daniel-leone.jpg", NULL,
+        "/home/fool/Pictures/auto.sh", NULL,
         NULL /* terminate */
 };
 

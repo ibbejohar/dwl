@@ -14,25 +14,24 @@
         pname = "dwl";
         version = "unstable";
 
-        src = ./.;  # Use the repo root as source
+        src = ./.;
 
-        nativeBuildInputs = [
-          pkgs.pkgconfig
-          pkgs.meson
-          pkgs.ninja
-          pkgs.wayland
-          pkgs.wlroots
-          pkgs.glib
-          pkgs.fontconfig
-          pkgs.pkg-config
-          pkgs.git
-          pkgs.cairo
-          pkgs.pango
-          pkgs.libxkbcommon
-          pkgs.pixman
-          pkgs.libdrm
-          pkgs.libinput
-          pkgs.udev
+        nativeBuildInputs = with pkgs; [
+          pkg-config
+          meson
+          ninja
+          wayland
+          wlroots
+          glib
+          fontconfig
+          git
+          cairo
+          pango
+          libxkbcommon
+          pixman
+          libdrm
+          libinput
+          udev
         ];
 
         buildPhase = ''
@@ -53,4 +52,3 @@
       };
     };
 }
-

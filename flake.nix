@@ -1,24 +1,20 @@
 {
-  description = "Flake to build dwl from a custom GitHub repo";
+  description = "dwl Wayland compositor flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    # Your custom dwl repo as a flake input
-    dwl-custom.url = "github:ibbejohar/dwl";
   };
 
-  outputs = { self, nixpkgs, dwl-custom, ... }:
+  outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       packages.${system}.dwl = pkgs.stdenv.mkDerivation {
         pname = "dwl";
-        version = "custom";
+        version = "unstable";
 
-        # Use the source from the flake input
-        src = dwl-custom;
+        src = ./.;  # Use the repo root as source
 
         nativeBuildInputs = [
           pkgs.pkgconfig
@@ -51,9 +47,10 @@
         meta = with pkgs.lib; {
           description = "Dynamic Wayland compositor based on dwm";
           license = licenses.mit;
-          maintainers = with maintainers; [ ];
           platforms = platforms.linux;
+          maintainers = with maintainers; [ ];
         };
       };
     };
 }
+

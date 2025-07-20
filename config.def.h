@@ -30,12 +30,14 @@ static const char *const autostart[] = {
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id             title         tags mask     isfloating   monitor scratchkey */
+	/* app_id             title       tags mask     isfloating  isterm  noswallow  monitor */
 	/* examples: */
-	{ "Gimp_EXAMPLE",     NULL,         0,            1,           -1,     0   }, /* Start on currently visible tags floating, not tiled */
-	{ "firefox_EXAMPLE",  NULL,         1 << 8,       0,           -1,     0   }, /* Start on ONLY tag "9" */
-	{ NULL,               "scratchpad", 0,            1,           -1,     's' },
-	{ "Bitwarden", "bitwarden",         0,            1,           -1,     'b' },
+	{ "Gimp_EXAMPLE",     NULL,       0,            1,          0,      0,         -1 }, /* Start on currently visible tags floating, not tiled */
+	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,          0,      0,         -1 }, /* Start on ONLY tag "9" */
+	{ NULL,               "scratchpad", 0,          1,          1,      1,         's' },
+	{ "Bitwarden", "bitwarden",         0,          1,          0,      0,         'b' },
+	{ "foot",             NULL,       0,            0,          1,      1,         -1 }, /* make foot swallow clients that are not foot */
+	{ "alacritty",        NULL,       0,            0,          1,      1,         -1 },
 };
 
 /* layout(s) */

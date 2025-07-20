@@ -18,37 +18,34 @@
 
         nativeBuildInputs = with pkgs; [
           pkg-config
-          meson
-          ninja
-          wayland-protocols
+          git
+        ];
+
+        buildInputs = with pkgs; [
+          libinput
           wayland
           wlroots
-          glib
-          fontconfig
-          git
-          cairo
-          pango
           libxkbcommon
-          pixman
-          libdrm
-          libinput
-          udev
-
-          # X11 support (optional, enable if you want Xwayland)
+          wayland-protocols
           xorg.libX11
           xorg.libxcb
-          xorg.xcbutilwm
-          xwayland
-          wlroots_0_19
+          xorg.libxcb_wm
+          xorg.xwayland
+          pixman
+          cairo
+          pango
+          glib
+          fontconfig
+          libdrm
+          udev
         ];
 
         buildPhase = ''
-          meson setup build
-          meson compile -C build
+          make
         '';
 
         installPhase = ''
-          meson install -C build
+          make PREFIX=$out install
         '';
 
         meta = with pkgs.lib; {

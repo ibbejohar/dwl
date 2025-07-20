@@ -19,6 +19,7 @@
         nativeBuildInputs = with pkgs; [
           pkg-config
           git
+          wayland-scanner
         ];
 
         buildInputs = with pkgs; [

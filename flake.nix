@@ -37,8 +37,9 @@
           # X11 support (optional, enable if you want Xwayland)
           xorg.libX11
           xorg.libxcb
-          libxcbwm
-          xorg.xwayland
+          xorg.xcbutilwm
+          xwayland
+          wlroots_0_19
         ];
 
         buildPhase = ''

@@ -8,7 +8,7 @@ static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const unsigned int borderpx         = 4;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x222222ff);
-static const float bordercolor[]           = COLOR(0x0f0f17ff);
+static const float bordercolor[]           = COLOR(0x0f0f1700);
 static const float focuscolor[]            = COLOR(0x314f57ff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
@@ -129,8 +129,8 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_Return,  spawn,          {.v = termcmd} },
 	{ MODKEY,                    Key_j,       focusstack,     {.i = +1} },
 	{ MODKEY,                    Key_k,       focusstack,     {.i = -1} },
-	{ MODKEY,                    Key_i,       incnmaster,     {.i = +1} },
-	{ MODKEY,                    Key_d,       incnmaster,     {.i = -1} },
+	{ MODKEY,                    Key_comma,   incnmaster,     {.i = +1} },
+	{ MODKEY,                    Key_period,  incnmaster,     {.i = -1} },
 	{ MODKEY,                    Key_h,       setmfact,       {.f = -0.05f} },
 	{ MODKEY,                    Key_l,       setmfact,       {.f = +0.05f} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_Return,  zoom,           {0} },
@@ -144,10 +144,12 @@ static const Key keys[] = {
 	{ MODKEY,                    Key_e,       togglefullscreen, {0} },
 	{ MODKEY,                    Key_0,       view,           {.ui = ~0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_0,       tag,            {.ui = ~0} },
-	{ MODKEY,                    Key_comma,   focusmon,       {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY,                    Key_period,  focusmon,       {.i = WLR_DIRECTION_RIGHT} },
+
+/*	{ MODKEY|WLR_MODIFIER_SHIFT, Key_comma,   focusmon,       {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, Key_period,  focusmon,       {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_comma,   tagmon,         {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_period,  tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+*/
 	TAGKEYS(                     Key_1,                       0),
 	TAGKEYS(                     Key_2,                       1),
 	TAGKEYS(                     Key_3,                       2),

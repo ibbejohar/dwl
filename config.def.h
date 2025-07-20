@@ -23,7 +23,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "bash", "-c", "swaybg -i /home/fool/Pictures/wallpaper/daniel-leone.jpg", NULL,
+        "/usr/bin/env","bash", "-c", "swaybg", "-i", "/home/fool/Pictures/wallpaper/daniel-leone.jpg", NULL,
         NULL /* terminate */
 };
 
@@ -128,7 +128,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *menucmd[] = { "bemenu-run", NULL };
+static const char *menucmd[] = { "bemenu-run", "-c", "-l", "5", "-W", "0.2" NULL };
 
 #include "keys.h"
 static const Key keys[] = {

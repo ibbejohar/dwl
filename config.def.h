@@ -127,8 +127,10 @@ static const Key keys[] = {
 	/* modifier                  key          function        argument */
 	{ MODKEY,                    Key_s,       spawn,          {.v = menucmd} },
 	{ MODKEY,                    Key_Return,  spawn,          {.v = termcmd} },
-	{ MODKEY,                    Key_j,       focusstack,     {.i = +1} },
-	{ MODKEY,                    Key_k,       focusstack,     {.i = -1} },
+        { MODKEY|WLR_MODIFIER_CTRL,  Key_h,   focusdir,       {.ui = 0} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  Key_l,   focusdir,       {.ui = 1} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  Key_k,   focusdir,       {.ui = 2} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  Key_j,   focusdir,       {.ui = 3} },
 	{ MODKEY,                    Key_comma,   incnmaster,     {.i = +1} },
 	{ MODKEY,                    Key_period,  incnmaster,     {.i = -1} },
 	{ MODKEY,                    Key_h,       setmfact,       {.f = -0.05f} },

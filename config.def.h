@@ -30,10 +30,11 @@ static const char *const autostart[] = {
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id             title       tags mask     isfloating   monitor */
+	/* app_id             title         tags mask     isfloating   monitor scratchkey */
 	/* examples: */
-	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
-	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
+	{ "Gimp_EXAMPLE",     NULL,         0,            1,           -1,     0   }, /* Start on currently visible tags floating, not tiled */
+	{ "firefox_EXAMPLE",  NULL,         1 << 8,       0,           -1,     0   }, /* Start on ONLY tag "9" */
+	{ NULL,               "scratchpad", 0,            1,           -1,     's' },
 };
 
 /* layout(s) */
@@ -130,6 +131,10 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 
+
++/* named scratchpads - First arg only serves to match against key in rules*/
+static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
+
 #include "keys.h"
 static const Key keys[] = {
 	/* modifier                  key          function        argument */
@@ -153,6 +158,11 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, Key_f,       setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                    Key_m,       setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                    Key_space,   setlayout,      {0} },
+
+	{ MODKEY,                    Key_y,       togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                    Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                    Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
+
 	{ MODKEY,                    Key_f,       togglefloating, {0} },
 	{ MODKEY,                    Key_e,       togglefullscreen, {0} },
 	{ MODKEY,                    Key_0,       view,           {.ui = ~0} },

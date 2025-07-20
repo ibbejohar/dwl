@@ -161,9 +161,7 @@ static const Key keys[] = {
 	{ MODKEY,                   -1, Key_m,       setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                   -1, Key_space,   setlayout,      {0} },
 
-	{ MODKEY,                   -1, Key_y,       chain,          {.v = "y" } },
-	{ 0,                       'y', Key_y,       togglescratch,  {.v = scratchpadcmd } },
-//	{ 0,                       'y', Key_b,       togglescratch,  {.v = bitwardencmd } },
+	{ MODKEY,                   Key_y, Key_y,       togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 

@@ -30,14 +30,14 @@ static const char *const autostart[] = {
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id             title       tags mask     isfloating  isterm  noswallow  monitor */
+	/* app_id             title       tags mask     isfloating  isterm  noswallow  monitor scratchpad */
 	/* examples: */
 	{ "Gimp_EXAMPLE",     NULL,       0,            1,          0,      0,         -1 }, /* Start on currently visible tags floating, not tiled */
 	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,          0,      0,         -1 }, /* Start on ONLY tag "9" */
-	{ NULL,               "scratchpad", 0,          1,          1,      1,         's' },
-	{ "Bitwarden", "bitwarden",         0,          1,          0,      0,         'b' },
+	{ NULL,               "scratchpad", 0,          1,          1,      1,         -1, 's' },
+	{ "Bitwarden", "bitwarden",         0,          1,          0,      0,         -1, 'b' },
 	{ "foot",             NULL,       0,            0,          1,      1,         -1 }, /* make foot swallow clients that are not foot */
-	{ "alacritty",        NULL,       0,            0,          1,      1,         -1 },
+	{ "Alacritty",        "Alacritty",       0,            0,          1,      1,         -1 },
 };
 
 /* layout(s) */
@@ -69,7 +69,7 @@ static const struct xkb_rule_names xkb_rules = {
 	/* example:
 	.options = "ctrl:nocaps",
 	*/
-	.options = "esc:nocaps",
+	.options = "ctrl:nocaps",
 };
 
 static const int repeat_rate = 25;

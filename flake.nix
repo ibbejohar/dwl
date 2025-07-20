@@ -37,7 +37,7 @@
           # X11 support (optional, enable if you want Xwayland)
           xorg.libX11
           xorg.libxcb
-          xorg.libxcb_wm
+          libxcb_wm
           xorg.xwayland
         ];
 

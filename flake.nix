@@ -29,8 +29,8 @@
           wayland-protocols
           xorg.libX11
           xorg.libxcb
-          xorg.libxcb_wm
-          xorg.xwayland
+          xorg.xcbutilwm
+          xwayland
           pixman
           cairo
           pango

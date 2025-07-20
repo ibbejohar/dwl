@@ -35,6 +35,7 @@ static const Rule rules[] = {
 	{ "Gimp_EXAMPLE",     NULL,         0,            1,           -1,     0   }, /* Start on currently visible tags floating, not tiled */
 	{ "firefox_EXAMPLE",  NULL,         1 << 8,       0,           -1,     0   }, /* Start on ONLY tag "9" */
 	{ NULL,               "scratchpad", 0,            1,           -1,     's' },
+	{ "Bitwarden", "bitwarden",         0,            1,           -1,     'b' },
 };
 
 /* layout(s) */
@@ -134,6 +135,7 @@ static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 
 /* named scratchpads - First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
+static const char *bitwardencmd[] = {"b", "bitwarden", NULL};
 
 #include "keys.h"
 static const Key keys[] = {
@@ -159,7 +161,9 @@ static const Key keys[] = {
 	{ MODKEY,                   -1, Key_m,       setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                   -1, Key_space,   setlayout,      {0} },
 
-	{ MODKEY,                   -1, Key_y,       togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                   -1, Key_y,       chain,          {.v = "y" } },
+	{ 0,                       'y', Key_y,       togglescratch,  {.v = scratchpadcmd } },
+	{ 0,                       'y', Key_b,       togglescratch,  {.v = bitwardencmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 

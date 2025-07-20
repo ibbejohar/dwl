@@ -132,7 +132,7 @@ static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 
 
-+/* named scratchpads - First arg only serves to match against key in rules*/
+/* named scratchpads - First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
 
 #include "keys.h"

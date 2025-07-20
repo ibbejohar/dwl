@@ -133,6 +133,7 @@ static const char *menucmd[] = { "bemenu-run", "-c", "-l", "5", "-W", "0.2", NUL
 #include "keys.h"
 static const Key keys[] = {
 	/* modifier                  key          function        argument */
+	{ MODKEY,                    Key_b,       togglebar,      {0} },
 	{ MODKEY,                    Key_s,       spawn,          {.v = menucmd} },
 	{ MODKEY,                    Key_Return,  spawn,          {.v = termcmd} },
         { MODKEY,                    Key_h,       focusdir,       {.ui = 0} },

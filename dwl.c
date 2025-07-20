@@ -153,6 +153,7 @@ typedef struct {
 
 typedef struct {
 	uint32_t mod;
+	int chain;
 	xkb_keycode_t keycode;
 	void (*func)(const Arg *);
 	const Arg arg;
@@ -387,6 +388,7 @@ static void zoom(const Arg *arg);
 static pid_t child_pid = -1;
 static int locked;
 static void *exclusive_focus;
+static int chainkey = -1;
 static struct wl_display *dpy;
 static struct wl_event_loop *event_loop;
 static struct wlr_backend *backend;
@@ -2068,11 +2070,31 @@ keybinding(uint32_t mods, xkb_keycode_t keycode)
 	const Key *k;
 	for (k = keys; k < END(keys); k++) {
 		if (CLEANMASK(mods) == CLEANMASK(k->mod)
-				&& keycode == k->keycode && k->func) {
+				&& keycode == k->keycode
+				&& chainkey == -1
+				&& k->chain == -1
+				&& k->func) {
 			k->func(&k->arg);
 			return 1;
 		}
+		else if (keycode == k->keycode
+				&& chainkey != -1
+				&& k->chain == chainkey
+				&& k->func) {
+			k->func(&k->arg);
+			chainkey = -1;
+			return 1;
+		}
+		else if (CLEANMASK(mods) == CLEANMASK(k->mod)
+				&& k->chain == (int)keycode
+				&& chainkey == -1
+				&& k->func) {
+			chainkey = keycode;
+			return 1;
+		}
 	}
+
+	chainkey = -1;
 	return 0;
 }
 

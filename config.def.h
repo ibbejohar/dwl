@@ -119,10 +119,10 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define MODKEY WLR_MODIFIER_LOGO
 
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_SHIFT, KEY,            tag,             {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,KEY,toggletag,  {.ui = 1 << TAG} }
+	{ MODKEY,                    -1, KEY,            view,            {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL,  -1, KEY,            toggleview,      {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_SHIFT, -1, KEY,            tag,             {.ui = 1 << TAG} }, \
+	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT, -1, KEY,toggletag,  {.ui = 1 << TAG} }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -138,40 +138,40 @@ static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NUL
 #include "keys.h"
 static const Key keys[] = {
 	/* modifier                  key          function        argument */
-	{ MODKEY,                    Key_b,       togglebar,      {0} },
-	{ MODKEY,                    Key_s,       spawn,          {.v = menucmd} },
-	{ MODKEY,                    Key_Return,  spawn,          {.v = termcmd} },
-        { MODKEY,                    Key_h,       focusdir,       {.ui = 0} },
-	{ MODKEY,                    Key_l,       focusdir,       {.ui = 1} },
-	{ MODKEY,                    Key_k,       focusdir,       {.ui = 2} },
-	{ MODKEY,                    Key_j,       focusdir,       {.ui = 3} },
-	{ MODKEY|WLR_MODIFIER_CTRL,  Key_j,       movestack,      {.i = +1} },
-	{ MODKEY|WLR_MODIFIER_CTRL,  Key_k,       movestack,      {.i = -1} },
-	{ MODKEY,                    Key_comma,   incnmaster,     {.i = +1} },
-	{ MODKEY,                    Key_period,  incnmaster,     {.i = -1} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_h,       setmfact,       {.f = -0.05f} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_l,       setmfact,       {.f = +0.05f} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_Return,  zoom,           {0} },
-	{ MODKEY,                    Key_Tab,     view,           {0} },
-	{ MODKEY,                    Key_q,       killclient,     {0} },
-	{ MODKEY,                    Key_t,       setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_f,       setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                    Key_m,       setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                    Key_space,   setlayout,      {0} },
+	{ MODKEY,                   -1, Key_b,       togglebar,      {0} },
+	{ MODKEY,                   -1, Key_s,       spawn,          {.v = menucmd} },
+	{ MODKEY,                   -1, Key_Return,  spawn,          {.v = termcmd} },
+        { MODKEY,                   -1, Key_h,       focusdir,       {.ui = 0} },
+	{ MODKEY,                   -1, Key_l,       focusdir,       {.ui = 1} },
+	{ MODKEY,                   -1, Key_k,       focusdir,       {.ui = 2} },
+	{ MODKEY,                   -1, Key_j,       focusdir,       {.ui = 3} },
+	{ MODKEY|WLR_MODIFIER_CTRL, -1, Key_j,       movestack,      {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_CTRL, -1, Key_k,       movestack,      {.i = -1} },
+	{ MODKEY,                   -1, Key_comma,   incnmaster,     {.i = +1} },
+	{ MODKEY,                   -1, Key_period,  incnmaster,     {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_h,       setmfact,       {.f = -0.05f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_l,       setmfact,       {.f = +0.05f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_Return,  zoom,           {0} },
+	{ MODKEY,                   -1, Key_Tab,     view,           {0} },
+	{ MODKEY,                   -1, Key_q,       killclient,     {0} },
+	{ MODKEY,                   -1, Key_t,       setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_f,       setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                   -1, Key_m,       setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                   -1, Key_space,   setlayout,      {0} },
 
-	{ MODKEY,                    Key_y,       togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                    Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                    Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                   -1, Key_y,       togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 
-	{ MODKEY,                    Key_f,       togglefloating, {0} },
-	{ MODKEY,                    Key_e,       togglefullscreen, {0} },
-	{ MODKEY,                    Key_0,       view,           {.ui = ~0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_0,       tag,            {.ui = ~0} },
+	{ MODKEY,                   -1, Key_f,       togglefloating, {0} },
+	{ MODKEY,                   -1, Key_e,       togglefullscreen, {0} },
+	{ MODKEY,                   -1, Key_0,       view,           {.ui = ~0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_0,       tag,            {.ui = ~0} },
 
-/*	{ MODKEY|WLR_MODIFIER_SHIFT, Key_comma,   focusmon,       {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_period,  focusmon,       {.i = WLR_DIRECTION_RIGHT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_comma,   tagmon,         {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_period,  tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+/*	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_comma,   focusmon,       {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_period,  focusmon,       {.i = WLR_DIRECTION_RIGHT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_comma,   tagmon,         {.i = WLR_DIRECTION_LEFT} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_period,  tagmon,         {.i = WLR_DIRECTION_RIGHT} },
 */
 	TAGKEYS(                     Key_1,                       0),
 	TAGKEYS(                     Key_2,                       1),
@@ -182,11 +182,11 @@ static const Key keys[] = {
 	TAGKEYS(                     Key_7,                       6),
 	TAGKEYS(                     Key_8,                       7),
 	TAGKEYS(                     Key_9,                       8),
-	{ MODKEY|WLR_MODIFIER_SHIFT, Key_q,       quit,           {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, -1, Key_q,       quit,           {0} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
-	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,Key_BackSpace, quit, {0} },
-#define CHVT(KEY,n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT, KEY, chvt, {.ui = (n)} }
+	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT, -1, Key_BackSpace, quit, {0} },
+#define CHVT(KEY,n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT, -1, KEY, chvt, {.ui = (n)} }
 	/* Ctrl-Alt-Fx is used to switch to another VT, if you don't know what a VT is
 	 * do not remove them.
 	 */

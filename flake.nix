@@ -35,10 +35,8 @@
           udev
 
           # X11 support (optional, enable if you want Xwayland)
-          xorg.libxcb
           xorg.libX11
           xorg.libxcb
-          xorg.libxcb_xfixes
           xorg.libxcb_wm
           xorg.xwayland
         ];

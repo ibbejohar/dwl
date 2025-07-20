@@ -20,6 +20,7 @@
           pkg-config
           meson
           ninja
+          wayland-protocols
           wayland
           wlroots
           glib
@@ -32,6 +33,14 @@
           libdrm
           libinput
           udev
+
+          # X11 support (optional, enable if you want Xwayland)
+          libxcb
+          xorg.libX11
+          xorg.libxcb
+          xorg.libxcb_xfixes
+          xorg.libxcb_wm
+          xorg.xwayland
         ];
 
         buildPhase = ''
@@ -48,6 +57,7 @@
           license = licenses.mit;
           platforms = platforms.linux;
           maintainers = with maintainers; [ ];
+          mainProgram = "dwl";
         };
       };
     };

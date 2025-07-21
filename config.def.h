@@ -139,7 +139,6 @@ static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
 static const char *bitwardencmd[] = {"b", "bitwarden", NULL};
 
-#include <X11/XF86keysym.h>
 #include "keys.h"
 static const Key keys[] = {
 	/* modifier                  key          function        argument */
@@ -169,9 +168,9 @@ static const Key keys[] = {
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 
-	{ 0,                        -1, XF86XK_AudioRaiseVolume, spawn, SHCMD("volume Raise") },
-	{ 0,                        -1, XF86XK_AudioLowerVolume, spawn, SHCMD("volume Lower") },
-	{ 0,                        -1, XF86XK_AudioMute,        spawn, SHCMD("volume Mute") },
+	{ 0,                        -1, Key_XF86AudioRaiseVolume, spawn, SHCMD("volume Raise") },
+	{ 0,                        -1, Key_XF86AudioLowerVolume, spawn, SHCMD("volume Lower") },
+	{ 0,                        -1, Key_XF86AudioMute,        spawn, SHCMD("volume Mute") },
 
 	{ MODKEY,                   -1, Key_f,       togglefloating, {0} },
 	{ MODKEY,                   -1, Key_e,       togglefullscreen, {0} },

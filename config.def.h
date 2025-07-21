@@ -188,10 +188,10 @@ static const Key keys[] = {
 	TAGKEYS(                     Key_3,                       2),
 	TAGKEYS(                     Key_4,                       3),
 	TAGKEYS(                     Key_5,                       4),
-	TAGKEYS(                     Key_6,                       5),
-	TAGKEYS(                     Key_7,                       6),
-	TAGKEYS(                     Key_8,                       7),
-	TAGKEYS(                     Key_9,                       8),
+//	TAGKEYS(                     Key_6,                       5),
+//	TAGKEYS(                     Key_7,                       6),
+//	TAGKEYS(                     Key_8,                       7),
+//	TAGKEYS(                     Key_9,                       8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, -1, Key_q,       quit,           {0} },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */

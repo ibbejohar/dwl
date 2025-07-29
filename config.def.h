@@ -134,6 +134,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
+static const char *powermenucmd[] = { "turnoff", NULL };
 
 
 /* named scratchpads - First arg only serves to match against key in rules*/
@@ -166,6 +167,7 @@ static const Key keys[] = {
 
 	{ MODKEY,                   Key_y, Key_y,       togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   Key_y, Key_b,       togglescratch,  {.v = bitwardencmd } },
+        { MODKEY,                   Key_d, Key_p,       spawn,          {.v = powermenucmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 

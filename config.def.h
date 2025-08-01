@@ -34,7 +34,8 @@ static const Rule rules[] = {
 	/* examples: */
 	{ "Gimp_EXAMPLE",     NULL,       0,            1,          0,      0,         -1,  0 }, /* Start on currently visible tags floating, not tiled */
 	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,          0,      0,         -1,  0 }, /* Start on ONLY tag "9" */
-	{ NULL,               "pulsemixer", 0,          1,          1,      1,         -1,  0 },
+	{ NULL,               "ncmpcpp",    0,          1,          1,      1,         -1, 'n' },
+	{ NULL,               "pulsemixer", 0,          1,          1,      1,         -1, 'p' },
 	{ NULL,               "scratchpad", 0,          1,          1,      1,         -1, 's' },
 	{ "Bitwarden", "bitwarden",         0,          1,          0,      0,         -1, 'b' },
 	{ "foot",             NULL,       0,            0,          1,      1,         -1,  0 }, /* make foot swallow clients that are not foot */
@@ -135,10 +136,16 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *powermenucmd[] = { "turnoff", NULL };
+static const char *mpdnext[] = { "mpc", "next", NULL };
+static const char *mpdplay[] = { "mpc", "play", NULL };
+static const char *mpdprev[] = { "mpc", "prev", NULL };
+static const char *mpdstop[] = { "mpc", "stop", NULL };
 
 
 /* named scratchpads - First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = { "s", "alacritty", "-t", "scratchpad", NULL };
+static const char *pulsemixercmd[] = { "p", "alacritty", "-t", "pulsemixer", "-e", "pulsemixer", NULL };
+static const char *ncmpcppcmd[] = { "n", "alacritty", "-t", "ncmpcpp", "-e", "ncmpcpp", NULL };
 static const char *bitwardencmd[] = {"b", "bitwarden", NULL};
 
 #include "keys.h"
@@ -167,6 +174,8 @@ static const Key keys[] = {
 
 	{ MODKEY,                   Key_y, Key_y,       togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   Key_y, Key_b,       togglescratch,  {.v = bitwardencmd } },
+	{ MODKEY,                   Key_y, Key_p,       togglescratch,  {.v = pulsemixercmd } },
+	{ MODKEY,                   Key_y, Key_n,       togglescratch,  {.v = ncmpcppcmd } },
         { MODKEY,                   Key_d, Key_p,       spawn,          {.v = powermenucmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
@@ -174,6 +183,11 @@ static const Key keys[] = {
 	{ 0,                        -1, Key_XF86AudioRaiseVolume, spawn, SHCMD("volume Raise") },
 	{ 0,                        -1, Key_XF86AudioLowerVolume, spawn, SHCMD("volume Lower") },
 	{ 0,                        -1, Key_XF86AudioMute,        spawn, SHCMD("volume Mute") },
+
+	{ MODKEY,                   -1, Key_p,  spawn,          {.v = mpdplay } },
+	{ MODKEY,                   -1, Key_o,  spawn,          {.v = mpdstop } },
+	{ MODKEY,                   -1, Key_n,  spawn,          {.v = mpdnext } },
+	{ MODKEY|WLR_MODIFIER_SHIFT,-1, Key_n,  spawn,          {.v = mpdprev } },
 
 	{ MODKEY,                   -1, Key_f,       togglefloating, {0} },
 	{ MODKEY,                   -1, Key_e,       togglefullscreen, {0} },

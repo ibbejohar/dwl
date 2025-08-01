@@ -137,7 +137,7 @@ static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *powermenucmd[] = { "turnoff", NULL };
 static const char *mpdnext[] = { "mpc", "next", NULL };
-static const char *mpdplay[] = { "mpc", "play", NULL };
+static const char *mpdplay[] = { "mpc", "toggle", NULL };
 static const char *mpdprev[] = { "mpc", "prev", NULL };
 static const char *mpdstop[] = { "mpc", "stop", NULL };
 

@@ -136,6 +136,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "alacritty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *powermenucmd[] = { "turnoff", NULL };
+static const char *bookmarkcmd[] = { "bookmark", NULL };
 static const char *mpdnext[] = { "mpc", "next", NULL };
 static const char *mpdplay[] = { "mpc", "toggle", NULL };
 static const char *mpdprev[] = { "mpc", "prev", NULL };
@@ -177,6 +178,7 @@ static const Key keys[] = {
 	{ MODKEY,                   Key_y, Key_p,       togglescratch,  {.v = pulsemixercmd } },
 	{ MODKEY,                   Key_y, Key_n,       togglescratch,  {.v = ncmpcppcmd } },
         { MODKEY,                   Key_d, Key_p,       spawn,          {.v = powermenucmd } },
+        { MODKEY,                   Key_d, Key_p,       spawn,          {.v = bookmarkcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                   -1, Key_grave,   focusortogglematchingscratch,  {.v = scratchpadcmd } },
 
